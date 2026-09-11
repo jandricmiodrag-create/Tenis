@@ -43,23 +43,20 @@ Potvrđeno kroz interakciju, uz isključivo izmišljene podatke:
 
 Sintaksa svih .gs datoteka, Client JavaScripta i JSON manifesta provjerena je prilikom generisanja paketa. Paket nema npm zavisnosti.
 
-## Obavezno završiti na Google nalogu
+## Google produkcijska provjera
 
-Nema dostavljene stvarne tabele niti instaliranog Apps Script projekta, pa nijednu stavku ispod ne predstavljamo kao završenu:
+Potvrđeno je: inicijalizacija listova, meni, OAuth, javni `/exec` uz Execute as Me i pristup Anyone, privatna tabela sa ograničenim saradnicima, čitanje stvarnih Sheets podataka, prikaz označenog DEMO turnira, uklanjanje DEMO podataka i završno prazno stanje sa zatvorenim prijavama.
 
-1. initialize_ stvarno kreira sve listove, bilješke, padajuće liste, zaštite i edit okidač.
-2. Web app /exec radi anonimno uz Execute as Me, a Google Sheets nije javno dijeljen.
-3. Upis sa jednog uređaja stiže u stvarni Prijave list; ponovljen klik ne dodaje drugi red.
-4. Odobravanje iz menija pojavljuje se na drugom uređaju pri osvježavanju, bez nove objave.
-5. Zatvaranje prijava i puna kategorija odbijaju upis i uz direktan poziv javnoj funkciji.
-6. Nacrt žrijeba nije javan; objava ga otkriva. Nosioci, BYE i rezultati prelaze u sljedeću rundu.
-7. Preklop termina se odbija bez djelimičnih izmjena; ispravka pobjednika blokira se nakon početka narednog meča.
-8. U mrežnom odgovoru getPublicData nema privatnih kontakata. Poziv organizatorskoj funkciji preko google.script.run nije dostupan.
-9. Prekid mreže i ponovni pristup pokazuju jasno stanje; prava Google greška ne otkriva privatne podatke.
-10. U browseru na stvarnom telefonu provjeriti veličinu teksta, dodir, tastaturu formulara, štampu/PDF rasporeda i CSV preuzimanje iz Google dijaloga.
+Sljedeće provjere zavise od stvarnih postavki turnira i nisu simulirane kao produkcijske činjenice:
+
+1. Upis sa javnog uređaja stiže u stvarni Prijave list; ponovljen klik ne dodaje drugi red.
+2. Odobravanje iz menija pojavljuje se na drugom uređaju pri osvježavanju, bez nove objave.
+3. Nacrt stvarnog žrijeba nije javan; objava ga otkriva. Nosioci, BYE i rezultati prelaze u sljedeću rundu.
+4. Preklop stvarnih termina se odbija bez djelimičnih izmjena; ispravka pobjednika blokira se nakon početka narednog meča.
+5. Na stvarnom telefonu provjeriti dodir, tastaturu formulara, štampu/PDF rasporeda i CSV preuzimanje iz Google dijaloga.
 
 ## Operativna ograničenja
 
-Nema potvrđene produkcione objave, testa stvarnih Google kvota ni garancije rada sa maksimalnim dozvoljenim obimom. Simulacija ne dokazuje OAuth, pristup Sheets servisima, stvarnu primjenu zaštita ili pouzdanost Google okidača. Privatnost i administracija su provjerene u kodu i lokalnim testovima; produkciona provjera javnog deploymenta ostaje obavezna.
+Produkcijska objava, OAuth i čitanje Sheets baze su potvrđeni. Nisu izvršeni testovi stvarnih Google kvota niti maksimalnog dozvoljenog obima.
 
 Puna Google transakcija ne postoji: journal i ScriptLock štite tok aplikacije, ali ne sprečavaju vlasnika da istovremeno direktno prepisuje zaštićene ćelije. V1 zato zahtijeva da se sistemski listovi mijenjaju isključivo kroz meni. Nema otpornosti na ozbiljan DoS niti verifikacije e-mail vlasništva. Objavljivanje promjena koda i davanje Google dozvola rade se odvojeno od dnevnog unosa podataka.
